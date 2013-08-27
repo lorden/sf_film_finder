@@ -1,6 +1,7 @@
 SF Film Finder
 ==============
 App to find locations of movies filmed in San Francisco. (Experiment to try some technologies)
+Data parsed from [San Francisco Data](https://data.sfgov.org/)
 
 Backend
 -------
