@@ -21,3 +21,5 @@ TODOs
 * Write backend tests (PyUnit)
 * Write frontend tests (Jasmine + Sinon)
 * Fix CSS for mobile
+* Integration with IMDB to provide more information
+* Smoother transitions between pages

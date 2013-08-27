@@ -44,7 +44,6 @@ def get_imdb_url(title, year, director):
 db.create_all()
 
 data_url = 'https://data.sfgov.org/api/views/yitu-d5am/rows.json?accessType=DOWNLOAD'
-data_url = 'http://0.0.0.0:8000/data.json'
 data = json.loads(urllib2.urlopen(data_url).read())
 
 """

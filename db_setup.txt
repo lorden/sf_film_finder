@@ -1,0 +1,5 @@
+For ubuntu:
+
+sudo -s -u postgres
+createuser -P
+createdb sf_film_finder
