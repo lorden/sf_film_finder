@@ -1,0 +1,52 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:100);
+@import url(http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911);
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', helvetica, arial, sans-serif;
+}
+body {
+  font-family: 'Goudy Bookletter 1911' , Georgia, serif;
+  padding: 0 .5em;
+}
+
+h1 a, h1 a:hover {
+  color: #4096EE;
+}
+
+a, a:hover {
+  color: #222222;
+}
+
+#intro {
+  font-size: 150%;
+}
+
+#search {
+  font-size: 2.5em;
+  padding: .2em;
+  height: auto;
+}
+
+.search-movie {
+  padding: 5px;
+}
+
+.search-movie {
+  width: 100%;
+}
+
+.search-movie:hover {
+  background-color: #EEE;
+}
+.search-movie .locations-count {
+  text-align: center;
+}
+
+.search-movie .locations-count > span {
+  font-size: 2em;
+  font-family: 'Raleway', helvetica, arial, sans-serif;
+}
+
+.location {
+  text-decoration: underline;
+  line-height: 2em;
+}

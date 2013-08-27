@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/film.png') }}" />
+  <title>SF Film Finder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sfff.css') }}">
+  <script src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
+</head>
+<body>
+
+  <script type="text/template" id="movie-list-template">
+    <input type="text" id="search" class="search-input" value="<%= term %>"/>
+    <% if (term != '' && movies.length > 0){ %>
+    <h4>Movies</h4>
+      <% _.each(movies, function(movie){ %>
+        <a href="/#/movies/<%= movie.get('id') %>">
+        <div class="search-movie small-12 columns" id="movie-<%= movie.id %>">
+          <div class="image small-1 columns">
+            <img src="/static/img/film.png" />
+          </div>
+          <div class="small-10 columns">
+            <div class="small-12 columns title">
+              <%= movie.get('title')%> (<%=movie.get('year')%>)
+            </div>
+            <div class="actors small-12 columns">
+              Actors: <%= movie.get('actors').join(', ') %>
+            </div>
+            <div class="director small-12 columns">
+              Director: <%= movie.get('director') %>
+            </div>
+          </div>
+          <div class="locations-count small-1 columns">
+          <span ><%= movie.get('locations_count') %></span><br/>location<% if (movie.get('locations_count') > 1) { %>s<% } %>
+          </div>
+        </div>
+        </a>
+      <% }); %>
+    <% } else if(term != '') { %>
+    <h4>No results for: <%= term %>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="loading-template">
+    <input type="text" id="search" class="search-input" value="<%= term %>"/>
+    <div style="text-align:center;">
+      <img src="static/img/loading.gif"/>
+    </div>
+  </script>
+
+  <script type="text/template" id="movie-template">
+    <h2><%= movie.get('title') %> (<%= movie.get('year') %>)</h2>
+    <% if (movie.get('actors')) { %>
+    <div>Actors: <%= movie.get('actors').join(', ') %></div>
+    <% } %>
+    <div>Director: <%= movie.get('director') %></div>
+    <br/>
+    <h4>Locations</h4>
+    <% _.each(movie.get('locations'), function(l){ %>
+      <div class="location"><a href="http://maps.google.com/?q=<%= encodeURIComponent(l) %>"><%= l %></a></div>
+    <% }); %>
+
+  </script>
+
+
+	<div class="row">
+		<div class="small-12 columns">
+			<h1><a href="/">SF Film Finder</a></h1>
+      <div id="search-box">
+        <p id="intro">Search for locations of films shot in San Francisco. Enter the name of the movie, actors or director to find the great spot you saw in that movie.</p>
+		  </div>
+		</div>
+	</div>
+  <div class="row">
+    <div id="results" class="small-12 columns"></div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/foundation.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/underscore-min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/backbone-min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/sfff.js') }}"></script>
+</body>
+</html>
